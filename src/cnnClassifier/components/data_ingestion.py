@@ -1,7 +1,7 @@
 import os
 import urllib.request as request #for requesting of unzipping the dataset file
 import zipfile #for unzipping the dataset file
-from src.cnnClassifier.logger import logging
+from cnnClassifier.logger import logging
 from cnnClassifier.utils.common import get_size
 from cnnClassifier.entity.config_entity import dataingestionconfig
 from pathlib import Path
