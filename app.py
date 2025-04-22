@@ -1,5 +1,7 @@
 from flask import Flask, request, jsonify, render_template
 import os
+
+import base64
 from flask_cors import CORS, cross_origin
 from cnnClassifier.utils.common import decodeImage
 from cnnClassifier.pipeline.predict import PredictionPipeline
@@ -32,12 +34,24 @@ def trainRoute():
 
 
 
-@app.route("/predict", methods=['POST'])
+
 @cross_origin()
+@app.route('/predict', methods=['POST'])
 def predictRoute():
-    image = request.json['image']
-    decodeImage(image, clApp.filename)
+    # Step 1: Get the base64 string
+    image_base64 = request.json['image']
+
+    # Step 2: Decode it to bytes
+    image_data = base64.b64decode(image_base64)
+
+    # Step 3: Save the decoded bytes to file
+    with open(clApp.filename, 'wb') as f:
+        f.write(image_data)
+
+    # Step 4: Predict
     result = clApp.classifier.predict()
+    print(result)
+
     return jsonify(result)
 
 
@@ -45,4 +59,4 @@ if __name__ == "__main__":
     clApp = ClientApp()
     # app.run(host='0.0.0.0', port=8080) #local host
     # app.run(host='0.0.0.0', port=8080) #for AWS
-    app.run(host='0.0.0.0', port=80) #for AZURE http://127.0.0.1/
+    app.run(host='127.0.0.1', port=80, debug=True) #for AZURE http://127.0.0.1/

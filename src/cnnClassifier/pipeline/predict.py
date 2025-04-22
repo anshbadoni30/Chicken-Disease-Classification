@@ -13,7 +13,7 @@ class PredictionPipeline:
     
     def predict(self):
         # load model
-        model = load_model("C:/Users/ANSH/Desktop/Chicken-Disease-Classification/artifacts/training/trained_model.h5")
+        model = load_model(os.path.join("artifacts","training", "trained_model.h5"))
 
         imagename = self.filename
         test_image = image.load_img(imagename, target_size = (224,224))
@@ -40,4 +40,4 @@ if __name__ == "__main__":
         pipeline = PredictionPipeline(test_image_path)
         result = pipeline.predict()
         print("Prediction result:", result)
-        '''
+'''
