@@ -1,8 +1,8 @@
 from urllib.parse import *
 from pathlib import Path
 import tensorflow as tf
-from cnnClassifier.entity.config_entity import EvaluationConfig
-from cnnClassifier.utils.common import save_json
+from src.cnnClassifier.entity.config_entity import EvaluationConfig
+from src.cnnClassifier.utils.common import save_json
 
 
 class Evaluation:

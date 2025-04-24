@@ -1,8 +1,13 @@
-from cnnClassifier.pipeline.stage_01_data_ingestion import DataIngestionTrainingPipeline
-from cnnClassifier.pipeline.stage_02_prepare_base_model import PrepareBaseModelTrainigPipeline
-from cnnClassifier.pipeline.stage_03_training import ModelTrainingPipeline
-from cnnClassifier.pipeline.stage_04_evaluation import EvaluationPipeline
-from cnnClassifier.logger import logging
+from src.cnnClassifier.pipeline.stage_01_data_ingestion import DataIngestionTrainingPipeline
+from src.cnnClassifier.pipeline.stage_02_prepare_base_model import PrepareBaseModelTrainigPipeline
+from src.cnnClassifier.pipeline.stage_03_training import ModelTrainingPipeline
+from src.cnnClassifier.pipeline.stage_04_evaluation import EvaluationPipeline
+from src.cnnClassifier.logger import logging
+
+import sys
+import os
+
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
 STAGE_NAME = "Data Ingestion stage"
 
