@@ -35,8 +35,8 @@ def trainRoute():
 
 
 
-@cross_origin()
 @app.route('/predict', methods=['POST'])
+@cross_origin()
 def predictRoute():
     # Step 1: Get the base64 string
     image_base64 = request.json['image']
