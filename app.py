@@ -19,6 +19,7 @@ class ClientApp:
         self.filename = "inputImage.jpg"
         self.classifier = PredictionPipeline(self.filename)
 
+clApp = ClientApp()
 
 @app.route("/", methods=['GET'])
 @cross_origin()
@@ -56,7 +57,6 @@ def predictRoute():
 
 
 if __name__ == "__main__":
-    clApp = ClientApp()
     # app.run(host='0.0.0.0', port=8080) #local host
     # app.run(host='0.0.0.0', port=8080) #for AWS
     app.run(host='0.0.0.0', port=80, debug=True) #for AZURE http://127.0.0.1/
